@@ -1,0 +1,215 @@
+
+Sub HideColom()
+Dim JumBidangStudi, JumSantri As Integer
+ 
+'JumBidangStudi = Range("G1").Value
+JumSantri = Range("AT4").Value
+
+'Select Case JumBidangStudi
+ 'Case 15
+  '    Range("P:AJ").EntireColumn.Hidden = False
+   '   Range("T:AJ").EntireColumn.Hidden = True
+ 'Case 16
+  '    Range("P:AJ").EntireColumn.Hidden = False
+   '   Range("U:AJ").EntireColumn.Hidden = True
+ 'Case 17
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("V:AJ").EntireColumn.Hidden = True
+ 'Case 18
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("W:AJ").EntireColumn.Hidden = True
+ 'Case 19
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("X:AJ").EntireColumn.Hidden = True
+ 'Case 20
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("Y:AJ").EntireColumn.Hidden = True
+ 'Case 21
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("Z:AJ").EntireColumn.Hidden = True
+ 'Case 22
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AA:AJ").EntireColumn.Hidden = True
+ 'Case 23
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AB:AJ").EntireColumn.Hidden = True
+ 'Case 24
+  '    Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AC:AJ").EntireColumn.Hidden = True
+ 'Case 25
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AD:AJ").EntireColumn.Hidden = True
+ 'Case 26
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AE:AJ").EntireColumn.Hidden = True
+ 'Case 27
+ '     Range("P:AJ").EntireColumn.Hidden = False
+ '     Range("AF:AJ").EntireColumn.Hidden = True
+'Case Else
+'Range("P:AJ").EntireColumn.Hidden = False
+'End Select
+Range("33:53").EntireRow.Hidden = True
+'Range("28:53").EntireRow.Hidden = False
+Select Case JumSantri
+ 
+ Case 24
+      'Range("28:53").EntireRow.Hidden = False
+      Range("33:53").EntireRow.Hidden = True
+ Case 25
+     ' Range("28:53").EntireRow.Hidden = False
+      Range("34:53").EntireRow.Hidden = True
+ Case 26
+      'Range("28:53").EntireRow.Hidden = False
+      Range("35:53").EntireRow.Hidden = True
+ Case 27
+     ' Range("28:53").EntireRow.Hidden = False
+      Range("36:53").EntireRow.Hidden = True
+ Case 28
+      'Range("28:53").EntireRow.Hidden = False
+      Range("37:53").EntireRow.Hidden = True
+ Case 29
+     ' Range("28:53").EntireRow.Hidden = False
+      Range("38:53").EntireRow.Hidden = True
+ Case 30
+      'Range("28:53").EntireRow.Hidden = False
+      Range("28:53").EntireRow.Hidden = True
+ Case 31
+      'Range("28:53").EntireRow.Hidden = False
+      Range("40:53").EntireRow.Hidden = True
+ Case 32
+      'Range("28:53").EntireRow.Hidden = False
+      Range("41:53").EntireRow.Hidden = True
+ Case 33
+      'Range("28:53").EntireRow.Hidden = False
+      Range("42:53").EntireRow.Hidden = True
+ Case 34
+      'Range("28:53").EntireRow.Hidden = False
+      Range("43:53").EntireRow.Hidden = True
+ Case 35
+      'Range("28:53").EntireRow.Hidden = False
+      Range("44:53").EntireRow.Hidden = True
+ Case 36
+      'Range("28:53").EntireRow.Hidden = False
+      Range("45:53").EntireRow.Hidden = True
+ Case 37
+      'Range("28:53").EntireRow.Hidden = False
+      Range("46:53").EntireRow.Hidden = True
+ Case 38
+      'Range("28:53").EntireRow.Hidden = False
+      Range("47:53").EntireRow.Hidden = True
+ Case 39
+      'Range("28:53").EntireRow.Hidden = False
+      Range("48:53").EntireRow.Hidden = True
+ Case 40
+      'Range("28:53").EntireRow.Hidden = False
+      Range("49:53").EntireRow.Hidden = True
+ Case 41
+      'Range("28:53").EntireRow.Hidden = False
+      Range("50:53").EntireRow.Hidden = True
+ Case 42
+      'Range("28:53").EntireRow.Hidden = False
+      Range("51:53").EntireRow.Hidden = True
+ Case 43
+      'Range("28:53").EntireRow.Hidden = False
+      Range("52:53").EntireRow.Hidden = True
+ Case 44
+      'Range("28:53").EntireRow.Hidden = False
+      Range("53:53").EntireRow.Hidden = True
+ Case 45
+      'Range("28:53").EntireRow.Hidden = False
+      Range("54:53").EntireRow.Hidden = True
+Case Else
+Range("28:53").EntireRow.Hidden = False
+End Select
+End Sub
+Private Sub btnAllPage_Click()
+Dim MaxPrint, MaxSantri As Integer
+
+MaxPrint = Range("AB1").Value
+MaxSantri = Range("AB1").Value
+
+   For i = 1 To MaxSantri
+        HideColom
+        With Sheets("Laporan UTS Satuan")
+            .Range("AQ1").Value = i
+            .PrintOut
+        End With
+        
+    Next i
+
+End Sub
+
+
+Private Sub btnMulti_Click()
+Dim Awal, Akhir, MaxPrint, MaxSantri As Integer
+Awal = TextBox1.Value
+Akhir = TextBox2.Value
+MaxPrint = Range("AB1").Value
+MaxSantri = Range("AB1").Value
+
+If Akhir > MaxSantri Then
+MsgBox "Cek lagi nomor yang akan dicetak, melebihi jumlah rombel", vbCritical, "Error Cetak"
+Else
+If Awal <= Akhir And Awal >= 1 Then
+Application.ScreenUpdating = False
+   For i = Awal To Akhir
+        HideColom
+        With Sheets("Laporan UTS Satuan")
+            .Range("AQ1").Value = i
+            .PrintOut
+        End With
+        
+    Next i
+Else
+    MsgBox "Cek lagi Nomor yang akan dicetak...!!!!", vbCritical, "Error Cetak"
+End If
+End If
+End Sub
+
+Private Sub btnThis_Click()
+    Range("33:53").EntireRow.Hidden = True
+   
+    'With Sheets("Laporan UTS Satuan")
+    '        .Range("AQ1").Value = Range("AQ1").Value
+    '        .PrintOut
+    'End With
+End Sub
+
+Private Sub OptionButton2_Click()
+TextBox1.Enabled = False
+TextBox2.Enabled = False
+btnMulti.Enabled = False
+btnAllPage.Enabled = False
+btnThis.Enabled = True
+End Sub
+
+Private Sub OptionButton3_Click()
+TextBox1.Enabled = True
+TextBox2.Enabled = True
+btnMulti.Enabled = True
+btnAllPage.Enabled = False
+btnThis.Enabled = False
+End Sub
+
+Private Sub OptionButton4_Click()
+TextBox1.Enabled = False
+TextBox2.Enabled = False
+btnMulti.Enabled = False
+btnAllPage.Enabled = True
+btnThis.Enabled = False
+End Sub
+
+Private Sub UserForm_Activate()
+TextBox1.Enabled = False
+TextBox2.Enabled = False
+btnMulti.Enabled = False
+btnAllPage.Enabled = True
+btnThis.Enabled = False
+ 
+End Sub
+
+
+
+
+
+
